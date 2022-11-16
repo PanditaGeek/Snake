@@ -44,11 +44,12 @@ while Run:
                 W += 47.05
                 change = 47.05
             if event.key == pygame.K_DOWN:
-                direction = 
+                direction = "Down"
                 snake_head = pygame.image.load("Head_Down.png")
                 H += 40
                 change = 40
             if event.key == pygame.K_UP:
+                direction = "Up"
                 snake_head = pygame.image.load("Head_Up.png")
                 H += -40
                 change = -40
