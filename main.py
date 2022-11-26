@@ -27,6 +27,7 @@ pygame.display.set_caption("Snake")
 #board = pygame.transform.scale(board_w, (800,600))
 
 snake_head = pygame.image.load("Head_Right.png")
+<<<<<<< HEAD
 direction = ""
 
 change_x = 0
@@ -59,7 +60,36 @@ class fruits:
         self.buff = buff
         self.fruit = fruit
 
+=======
+#direction = ""
+def head_direction(event,snake_head):
+    snake_head == pygame.image.load("Head_Right.png") 
+    if event.key == pygame.K_LEFT:
+        snake_head = pygame.image.load("Head_Left.png")
+    if event.key == pygame.K_RIGHT:
+        snake_head = pygame.image.load("Head_Right.png")
+    if event.key == pygame.K_DOWN:
+        snake_head = pygame.image.load("Head_Down.png")
+    if event.key == pygame.K_UP:
+        snake_head = pygame.image.load("Head_Up.png")
+    return snake_head
+change_x = 0
+change_y = 0
+H_snake = 322
+W_snake = 50
+change = 0
+Run = True
+direction = ""
+>>>>>>> 1838b60f616b13a3fd789c657865cb7c5eee498a
 while Run:
+    if direction == "Left":
+        W_snake -= 0.3  
+    if direction == "Right":
+        W_snake += 0.3
+    if direction == "Up":
+        H_snake -= 0.3
+    if direction == "Down":
+        H_snake += 0.3  
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
                 Run = False
@@ -67,6 +97,7 @@ while Run:
             if event.key == pygame.K_LEFT and direction != "Right":
                 snake_head = pygame.image.load("Head_Left.png")
                 direction = "Left"
+<<<<<<< HEAD
             if event.key == pygame.K_RIGHT and direction != "Left":
                 snake_head = pygame.image.load("Head_Right.png")
                 direction = "Right"
@@ -116,5 +147,29 @@ while Run:
     #window.blit(board,(10,10))
     pygame.draw.circle(window, colores("turquesa"),[W_snake,H_snake],20)
     #window.blit(snake_head,(W_snake,H_snake))
+=======
+            if event.key == pygame.K_RIGHT:
+                snake_head = pygame.image.load("Head_Right.png")
+                direction = "Right"
+            if event.key == pygame.K_DOWN:
+                direction = "Down"
+                snake_head = pygame.image.load("Head_Down.png")
+            if event.key == pygame.K_UP:
+                direction = "Up"
+                snake_head = pygame.image.load("Head_Up.png")
+        
+   
+    if H_snake <= 82:
+        H_snake = 82
+    elif H_snake >= H:
+        H_snake = H - snake_head.get_size()[1]
+    if W_snake <= 0:
+        W_snake = 0
+    elif W_snake >= W:
+        W_snake = W - snake_head.get_size()[0]
+    window.fill((0,0,0))
+    window.blit(board,(-1,82))
+    window.blit(snake_head,(W_snake,H_snake))
+>>>>>>> 1838b60f616b13a3fd789c657865cb7c5eee498a
     pygame.display.update()
     
