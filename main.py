@@ -30,7 +30,8 @@ Run = True
 direction = ""
 while Run:
     if direction == "Left":
-        W_snake -= 0.5  
+        W_snake -= 0.5
+          
     if direction == "Right":
         W_snake += 0.5
     if direction == "Up":
