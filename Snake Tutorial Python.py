@@ -9,7 +9,7 @@ from tkinter import messagebox
 class cube(object):
     rows = 20
     w = 500
-    def _init_(self,start,dirnx=1,dirny=0,color=(255,0,0)):
+    def __init__(self,start,dirnx=1,dirny=0,color=(255,0,0)):
         self.pos = start
         self.dirnx = 1
         self.dirny = 0
@@ -41,7 +41,7 @@ class cube(object):
 class snake(object):
     body = []
     turns = {}
-    def _init_(self, color, pos):
+    def __init__(self, color, pos):
         self.color = color
         self.head = cube(pos)
         self.body.append(self.head)
@@ -172,6 +172,8 @@ def message_box(subject, content):
     except:
         pass
  
+
+
  
 def main():
     global width, rows, s, snack
