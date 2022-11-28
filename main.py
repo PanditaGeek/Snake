@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 import time
 import random
 import copy
@@ -32,9 +33,6 @@ class Food(Square):
         pygame.draw.rect(window, colores["fantasma"], current_rect)
 
 class Wall(Square):
-
-    def __init__(self, x, y):
-        super().__init__(x, y)
 
     def renderer(self,window):
         current_rect = pygame.Rect(self.pos_x, self.pos_y, 40, 40)
@@ -203,21 +201,27 @@ def juego_first():
                 click = "Sí"
         window.fill(colores["malva"])
 
-        cuadro1 = pygame.draw.rect(window, colores["bordo"], [(W // 2 - 50, H // 2 - 90), (100, 100)], 0)
+        imagen_ini = pygame.image.load("image.png")
+        imagen_changed = pygame.transform.scale(imagen_ini, (400, 457))
+        imagen = window.blit(imagen_changed, (W // 2 - imagen_changed.get_size()[0] // 2, H // 2 - imagen_changed.get_size()[1] // 2))
 
         if click == "Sí":
-            if pygame.Rect.collidepoint(cuadro1, mouse_pos):
+            if pygame.Rect.collidepoint(imagen, mouse_pos):
                 Ini_win = False
                 click = "No"
+
         
-        write("¿Empezar", 360, 220)
-        write("juego?", 360, 241)
 
         pygame.display.update()
 
 #Inicializando el juego
 
 def juego_ini():
+
+    mixer.music.load("Nueva_musica_Juego.mp3")
+    mixer.music.play(-1) # (-1) para que se repita
+
+    eating_sound = mixer.Sound("sonido_Comer_en_Minecraft.wav")  
 
     snake_i = Snake()
     snake = copy.deepcopy(snake_i)
@@ -340,6 +344,7 @@ def juego_ini():
         if current_food.is_eaten:
             current_food = foods_available.pop()
             score += 100
+            eating_sound.play()
 
         time.sleep(0.6)
 
