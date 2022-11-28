@@ -4,8 +4,6 @@ import random
 
 pygame.init()
 
-global score, Run, Lose_win
-
 W = 820
 H = 620
 
@@ -17,11 +15,15 @@ class Square:
         self.pos_x = x
         self.pos_y = y
 
+#La clase que indica el estado de la comida (si fue comida o no)
 class Food(Square):
     is_eated = False
 
+#La clase que indica el estado de la colisión de la serpiente
 class SnakeSquare(Square):
     is_collisioned = False
+
+#La clase de la serpiente, su cuerpo, que crezca
 class Snake:
     squares_list = []
 
@@ -69,6 +71,8 @@ class Snake:
     def collision_checker(self):
         pass
 
+#El diccionario de colores
+
 colores = {
     "verde": (0,128,55),
     "rojo": (255,22,22),
@@ -104,23 +108,6 @@ def fin_max(list):
 def dibuja_circulo(coordenadas, radio = 20):
     pygame.draw.circle(window, colores["turquesa"], coordenadas, radio)
 
-#food
-class food:
-    def __init__(self, window):
-        self.x = random.randrange(40) * 10
-        self.y = random.randrange(40) * 10
-        self.window = window
-
-    def draw(self):
-        pygame.draw.rect(self.window, (255, 0, 0), (self.x, self.y, 20, 20))
-
-    def relocate(self):
-        self.x = random.randrange(30) * 5
-        self.y = random.randrange(30) * 5
-
-def redraw(window):
-    comida.draw() 
-
 #score
 
 type_word = pygame.font.Font('freesansbold.ttf', 28)
@@ -141,15 +128,11 @@ max_p_i_H = 10
 
 window = pygame.display.set_mode((W, H))
 
-comida = food(window)
-
-#icon_game = pygame.image.load("Dragon.png")
+icon_game = pygame.image.load("imagen_icono.png")
 
 pygame.display.set_caption("Snake")
 
-#pygame.display.set_icon(icon_game)
-
-snake_head = pygame.image.load("Head_Right.png")
+pygame.display.set_icon(icon_game)
 
 s_scores = []
 
