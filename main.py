@@ -30,13 +30,13 @@ Run = True
 direction = ""
 while Run:
     if direction == "Left":
-        W_snake -= 0.3  
+        W_snake -= 0.5  
     if direction == "Right":
-        W_snake += 0.3
+        W_snake += 0.5
     if direction == "Up":
-        H_snake -= 0.3
+        H_snake -= 0.5
     if direction == "Down":
-        H_snake += 0.3  
+        H_snake += 0.5  
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
                 Run = False
