@@ -138,33 +138,15 @@ s_scores = []
 
 def movement_x(direction):
     if direction == "Left":
-        change_x = -40
-        return change_x
-    elif direction == "Right":
-        change_x = 40
-        return change_x
-    return 0
-
-def movement_y(direction):
+        W_snake -= 0.3  
+    if direction == "Right":
+        W_snake += 0.3
+    if direction == "Up":
+        H_snake -= 0.3
     if direction == "Down":
-        change_y = 40
-        return change_y
-    elif direction == "Up":
-        change_y = -40
-        return change_y
-    return 0
-
-def juego_first():
-
-    Ini_win = True
-
-    click = ""
-
-    while Ini_win:
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                Ini_win = False
+        H_snake += 0.3  
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
                 Run = False
                 Lose_win = False
             if event.type == pygame.MOUSEBUTTONUP:
